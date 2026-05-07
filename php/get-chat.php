@@ -5,15 +5,18 @@
         
         $outgoing_id = mysqli_real_escape_string($conn, $_POST['outgoing_id']);
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
-
+        date_default_timezone_set('Asia/Yerevan');
         $filePath = "";
         $fileHTML = "";
         $output="";
 
         $sql = $conn->prepare("SELECT * FROM messages 
                                 LEFT JOIN users on users.unique_id = messages.outgoing_msg_id
-                                WHERE outgoing_msg_id = ? AND incoming_msg_id = ?
-                                OR outgoing_msg_id = ? AND incoming_msg_id = ? ORDER BY msg_id");
+                                WHERE 
+                                    (outgoing_msg_id = ? AND incoming_msg_id = ?)
+                                    OR
+                                    (outgoing_msg_id = ? AND incoming_msg_id = ?)
+                                ORDER BY msg_id");
         $sql->bind_param("iiii", $outgoing_id, $incoming_id, $incoming_id, $outgoing_id);
         if(!$sql->execute()){
             die("Error: " . $sql->error);
@@ -33,7 +36,7 @@
                 if($row['outgoing_msg_id'] == $outgoing_id){
 
                     if(!empty($row['uploadedFile'])){
-                        $filePath = "php/files/".$row['uploadedFile'];
+                        $filePath = "php/uploadedFiles/".$row['uploadedFile'];
 
                         $classActive = "active";
                         

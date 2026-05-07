@@ -27,6 +27,7 @@ $sendBtn.onclick = () => {
                 $inputField.value = "";
                 $fileInput.value = "";           
                 $indicator.classList.remove("active");
+                console.log(data);
             }
         }
     }
