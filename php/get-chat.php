@@ -28,34 +28,35 @@
                 $fileHTML = "";
                 $classActive = "";
                 $messageHTML = "";
+
                 if(!empty($row['sent_at'])){
                         $timestamp = $row['sent_at'];
                     } else{
                         $timestamp = 0;
                     }
-                if($row['outgoing_msg_id'] == $outgoing_id){
 
-                    if(!empty($row['uploadedFile'])){
+                if(!empty($row['uploadedFile'])){
                         $filePath = "php/uploadedFiles/".$row['uploadedFile'];
 
                         $classActive = "active";
                         
                         $ext = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
 
-                        if(in_array($ext, ["jpeg", "jpg", "png"]) && !empty($row['msg'])){
+                        if(in_array($ext, ["jpeg", "jpg", "png", "gif"]) && !empty($row['msg'])){
                             $fileHTML = '<img src="'.$filePath.'" >';
                             $messageHTML = '<p class = "'.$classActive.'">'.$row['msg'].'</p>';
-                        } else{
+                        } else if(in_array($ext, ["jpeg", "jpg", "png", "gif"])){
                             $fileHTML = '<img class="'.$classActive.'"src="'.$filePath.'" >';
+                        } else{
+                            $fileName = basename($filePath);
+
+                            $fileHTML = '<a class="file-download" href="'.$filePath.'" download>'.$fileName.'</a>';
                         }
-                    }
+                }else{
+                    $messageHTML = '<p>'.$row['msg'].'</p>';
+                }
 
-                    if(!empty($row['msg']) && empty($row['uploadedFile'])){
-                        $messageHTML = '<p>'.$row['msg'].'</p>';
-                    }
-
-                    
-                    
+                if($row['outgoing_msg_id'] == $outgoing_id){
                     $output .= '<div class="chat outgoing">
                                         <div class="details">
                                             '.$fileHTML.'
@@ -65,9 +66,10 @@
                                 </div>';
                 } else{
                     $output .= '<div class="chat incoming">
-                                    <img src="php/images/'.$row['img'].'">
+                                    <img class="pfp" src="php/images/'.$row['img'].'">
                                     <div class="details">
-                                        <p>'.$row['msg'].'</p>
+                                        '.$fileHTML.'
+                                        '.$messageHTML.'
                                         <span>'.date("H:i", $timestamp).'</span>
                                     </div>
 				                </div>';

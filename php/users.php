@@ -15,9 +15,9 @@
                                     OR
                                     (messages.incoming_msg_id = {$_SESSION['unique_id']} AND messages.outgoing_msg_id = users.unique_id)
                                 ))");
-    if(mysqli_num_rows($result) == 1){
-        $output .= "There were no results";
-    } elseif(mysqli_num_rows($result) > 1){
+    if(mysqli_num_rows($result) == 0){
+        $output .= "You haven't messaged anyone yet";
+    } elseif(mysqli_num_rows($result) >= 1){
        include "data.php";
     }
     echo $output;

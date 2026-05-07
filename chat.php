@@ -28,7 +28,9 @@
 				</div>
 			</header>
 			<div class="chat-box">
-				
+				<div class="error-box">
+					<span>sdkdfgj</span>
+				</div>
 			</div>
 			<form action="#" class="typing-area" autocomlete="off" enctype="multipart/form-data">
 				<input type="text" name="outgoing_id" value="<?php echo $_SESSION['unique_id'] ?>" hidden>

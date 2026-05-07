@@ -13,13 +13,16 @@
             $tmp_name = $_FILES['inputFile']['tmp_name'];
 
             //get file extension
-            $file_explode = explode(".", $file_name);
-            $file_ext = strtolower(end($file_explode));
+            $ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+            if(in_array($ext, ["jpg", "jpeg", "png", "gif", "pdf", "txt", "docx", "zip"])){
+                $time = time();
+                $file_new_name = $time.$file_name;
 
-            $time = time();
-            $file_new_name = $time.$file_name;
-
-            move_uploaded_file($tmp_name, "uploadedFiles/".$file_new_name);
+                move_uploaded_file($tmp_name, "uploadedFiles/".$file_new_name);
+            } else{
+                die($file_name." Can't be sent");
+            }
+            
         }
 
         if(!empty($message) || !empty($file_new_name)){

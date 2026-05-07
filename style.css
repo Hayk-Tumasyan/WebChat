@@ -142,18 +142,6 @@ body{
 	border-radius: 50%;
 }
 
-.outgoing .details img{
-	max-width: 200px;
-	display: block;
-	border: 5px solid #333;
-	border-radius: 10px 10px 0 0;
-	margin-top: 0;
-}
-
-.outgoing .details img.active{
-	border-radius: 10px 10px 10px 10px;
-}
-
 .users header,
 .users-list a{
 	display: flex;
@@ -383,7 +371,7 @@ body{
 	align-items: flex-end;
 }
 
- .chat-box .incoming img{
+ .chat-box .incoming .pfp{
 	width: 35px;
 	height: 35px;
 	margin-right: 10px;
@@ -394,15 +382,29 @@ body{
 	align-items: flex-end;
 }
 
+.outgoing .details img{
+	max-width: 200px;
+	display: block;
+	border: 5px solid #333;
+	border-radius: 10px 10px 0 0;
+	margin-top: 0;
+}
+
+.outgoing .details img.active{
+	border-radius: 10px 10px 10px 10px;
+}
+
 .outgoing .details{
 	max-width: calc(100% - 130px);
 	margin-left: auto;  
+	position: relative;
 }
 
 .outgoing .details p{
 	background: #333;
 	color: #fff;
 	border-radius: 18px 18px 0 18px;
+	padding-right: 40px;
 }
 
 .outgoing .details p.active{
@@ -414,16 +416,58 @@ body{
 .incoming .details{
 	max-width: calc(100% - 130px);
 	margin-right: auto;
+	position: relative;
+}
+
+.incoming .details img{
+	max-width: 200px;
+	display: block;
+	border: 5px solid #ffffff;
+	border-radius: 10px 10px 0 0;
+	margin-top: 0;
+}
+
+.incoming .details img.active{
+	border-radius: 10px 10px 10px 10px;
+	border: 5px solid #ffffff;
 }
 
 .incoming .details p{
 	background: #fff;
 	color: #333;
 	border-radius: 18px 18px 18px 0;
+	padding-right: 40px;
+}
+
+.incoming .details p.active{
+	border-radius: 0 0 0 18px ;
+
 }
 
 .outgoing .details span{
-	/* margin-left: 70%; */
+	position: absolute;
+    bottom: 2px;
+    right: 6px;
+    font-size: 10px;
+    color: white;
+	/* background-color: rgb(116, 116, 116, 0.2); 
+  	border: 2px solid rgba(116, 116, 116, 0.01);  */
+	border-radius: 41%;
+	margin-bottom: 3px;
+	margin-right: 3px;
+}
+
+.incoming .details span{
+    font-size: 10px;
+    color: black;
+	position: absolute;
+    bottom: 2px;
+    right: 6px;
+	background-color: rgb(255, 255, 255, 0.4); 
+  	border: 1px solid rgb(255, 255, 255, 0.04);
+	border-radius: 35%; 
+	margin-bottom: 3px;
+	margin-right: 3px;
 }
 
 .file-btn {
@@ -443,4 +487,40 @@ body{
 
 .file-indicator.active{
 	display: block;
+}
+
+.outgoing .file-download{
+    display: inline-block;
+    padding: 8px 12px;
+    background: #444;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-size: 14px;
+	text-decoration: underline;
+	padding-right: 40px;
+}
+
+.incoming .file-download{
+	display: inline-block;
+    padding: 8px 12px;
+    background: #fff;
+    color: #333;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-size: 14px;
+	text-decoration: underline;
+	padding-right: 40px;
+}
+
+.file-download:hover{
+    opacity: 0.9;
+}
+
+.chat-box .error-box span{
+	position: absolute;
+	align-items: center;
+	justify-content: center;
 }
