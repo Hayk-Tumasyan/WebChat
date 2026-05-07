@@ -1,0 +1,24 @@
+<?php
+    session_start();
+    include_once "config.php";
+    $outgoing_id = $_SESSION['unique_id'];
+    $output = "";
+
+    $result = $conn->query("SELECT *
+                            FROM users
+                            WHERE users.unique_id != {$_SESSION['unique_id']}
+                            AND EXISTS (
+                                SELECT 1
+                                FROM messages
+                                WHERE (
+                                    (messages.outgoing_msg_id = {$_SESSION['unique_id']} AND messages.incoming_msg_id = users.unique_id)
+                                    OR
+                                    (messages.incoming_msg_id = {$_SESSION['unique_id']} AND messages.outgoing_msg_id = users.unique_id)
+                                ))");
+    if(mysqli_num_rows($result) == 1){
+        $output .= "There were no results";
+    } elseif(mysqli_num_rows($result) > 1){
+       include "data.php";
+    }
+    echo $output;
+?>
