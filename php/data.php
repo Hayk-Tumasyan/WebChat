@@ -9,19 +9,21 @@
         $row2 = mysqli_fetch_assoc($query2);
         $msg = "";
         $you = "";
-        $ext = strtolower(pathinfo("php/uploadedFiles/".$row2['uploadedFile'], PATHINFO_EXTENSION));
+        $ext = "";
+        
         // echo $ext;
         if(mysqli_num_rows($query2)>0){
             $resultm = $row2['msg'];
             if(!empty($resultm) ){
                 strlen($resultm) > 28 ? $msg = substr($resultm, 0, 28).'...' : $msg = $resultm;
-            } else if(in_array($ext, ["docx", "txt", "zip", "pdf"])){
-                $msg .= '<i class="fas fa-file-alt"></i>';
-            } else{
-                $msg .= '<img src="php/uploadedFiles/'.$row2['uploadedFile'].'" style="width: 20px; height: 20px; border-radius: 0%;">';
-            }
-        } else{
-            $resultm = "no messages yet";
+            } elseif(!empty($row2['uploadedFile'])){
+                $ext = strtolower(pathinfo('php/uploadedFiles/'.$row2['uploadedFile'].'', PATHINFO_EXTENSION));
+                if(in_array($ext, ["docx", "txt", "zip", "pdf"])){
+                    $msg .= '<i class="fas fa-file-alt"></i>';
+                } else{
+                    $msg .= '<img src="php/uploadedFiles/'.$row2['uploadedFile'].'" style="width: 20px; height: 20px; border-radius: 0%;">';
+                }
+            } 
         }
 
          
