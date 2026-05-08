@@ -28,9 +28,9 @@
 				</div>
 			</header>
 			<div class="chat-box">
-				<div class="error-box">
+				<!-- <div class="error-box">
 					<span>sdkdfgj</span>
-				</div>
+				</div> -->
 			</div>
 			<form action="#" class="typing-area" autocomplete="off" enctype="multipart/form-data">
 				<input type="text" name="outgoing_id" value="<?php echo $_SESSION['unique_id'] ?>" hidden>
@@ -51,7 +51,6 @@
 			</form>
 		</section>
 	</div>
-	<!-- <script src="http://localhost:3000/socket.io/socket.io.js"></script> -->
 	<script type="text/javascript" src="javascript/chat.js"></script>
 </body>
 </html>

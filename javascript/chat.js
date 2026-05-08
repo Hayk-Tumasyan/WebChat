@@ -63,4 +63,3 @@ setInterval(() => {
 function scrollToBottom(){
     $chatBox.scrollTop = $chatBox.scrollHeight;
 }
-
