@@ -12,19 +12,19 @@
 			<form action="#">
 				<div class="error-txt"></div>
 					<div class="field">
-						<label>Email Address</label>
-						<input type="text" name="email" placeholder="Enter your email address" required>
+						<label>Email հասցե</label>
+						<input type="text" name="email" placeholder="Մուտքագրեք ձեր Email հասցեն" required>
 					</div>
 					<div class="field">
-						<label>Password</label>
-						<input type="password" name="password" placeholder="Enter your password" required>
+						<label>Գաղտնաբառ</label>
+						<input type="password" name="password" placeholder="Մուտքագրեք ձեր գաղտնաբառը" required>
 						<i class="fas fa-eye"></i>
 					</div>
 					<div class="field button">
-						<input type="submit" value="Continue to Chat">
+						<input type="submit" value="Մուտք գործել">
 					</div>
 			</form>
-			<div class="link">Not yet signed up? <a href="index.php">Signup now</a></div>
+			<div class="link">Դեռ գրանցված չե՞ք <a href="index.php">Գրանցվել</a></div>
 		</section>
 	</div>
 
