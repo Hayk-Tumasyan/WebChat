@@ -22,17 +22,17 @@
 					<div class="details">
 						<span><?php echo $row['fname'] . " " . $row['lname'] ?></span>
 						<p><?php if($row['status'] == 1){
-							echo "Online";
+							echo "Առցանց";
 						} else{
-							echo "Offline";
+							echo "Անցանց";
 						} ?></p>
 					</div>
 				</div>
-				<a href="php/logout.php" class="logout">Logout</a>
+				<a href="php/logout.php" class="logout">Դուրս գալ</a>
 			</header>
 			<div class="search">
-				<span class="text">Select an user to start chat</span>
-				<input type="text" placeholder="Enter name to search...">
+				<span class="text">Ընտրեք օգտատեր՝ չատ սկսելու համար</span>
+				<input type="text" placeholder="Մուտքագրեք անուն փնտրելու համար...">
 				<button><i class="fas fa-search"></i></button>
 			</div>
 			<div class="users-list"></div>

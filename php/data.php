@@ -27,7 +27,7 @@
         }
 
          
-        (mysqli_num_rows($query2)>0 && $row2['outgoing_msg_id']==$outgoing_id) ? $you = "You: " : $you = "";
+        (mysqli_num_rows($query2)>0 && $row2['outgoing_msg_id']==$outgoing_id) ? $you = "Դուք: " : $you = "";
         ($row['status'] == 0) ? $offline = "offline" : $offline = "";
         // $_SESSION['user_id'] = $row['unique_id'];
         $output .= '<a href="chat.php?user_id='.$row['unique_id'].'">
