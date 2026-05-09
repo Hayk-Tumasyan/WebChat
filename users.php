@@ -32,7 +32,7 @@
 			</header>
 			<div class="search">
 				<span class="text">Ընտրեք օգտատեր՝ չատ սկսելու համար</span>
-				<input type="text" placeholder="Մուտքագրեք անուն փնտրելու համար...">
+				<input type="text" placeholder="Մուտքագրեք անուն՝ որոնելու համար...">
 				<button><i class="fas fa-search"></i></button>
 			</div>
 			<div class="users-list"></div>

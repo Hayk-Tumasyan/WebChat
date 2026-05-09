@@ -45,7 +45,7 @@
 					</label>
 					<span class="file-indicator"></span>
 				</div>
-				<input type="text" name="message" class="input-field" placeholder="Գրել նամակ...">
+				<input type="text" name="message" class="input-field" placeholder="Մուտքագրեք հաղորդագրություն այստեղ...">
 				
 				<button><i class="fab fa-telegram-plane"></i></button>
 			</form>
