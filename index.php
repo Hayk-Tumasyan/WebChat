@@ -13,32 +13,32 @@
 				<div class="error-txt"></div>
 				<div class="name-details">
 					<div class="field">
-						<label>First Name</label>
-						<input type="text" name="fName" placeholder="First Name" required>
+						<label>Անուն</label>
+						<input type="text" name="fName" placeholder="Անուն" required>
 					</div>
 					<div class="field">
-						<label>Last Name</label>
-						<input type="text" name="lName" placeholder="Last Name" required>
+						<label>Ազգանուն</label>
+						<input type="text" name="lName" placeholder="Ազգանուն" required>
 					</div>
 				</div>
 					<div class="field">
-						<label>Email Address</label>
-						<input type="text" name="email" placeholder="Enter your email address" required>
+						<label>Email հասցե</label>
+						<input type="text" name="email" placeholder="Մուտքագրեք ձեր Email հասցեն" required>
 					</div>
 					<div class="field">
-						<label>Password</label>
-						<input type="password" name="password" placeholder="Enter a new password" required>
+						<label>Գաղտնաբառ</label>
+						<input type="password" name="password" placeholder="Գաղտնաբառ մուտքագրեք" required>
 						<i class="fas fa-eye"></i>
 					</div>
 					<div class="field image">
-						<label>Select Image</label>
+						<label>Ընտրել նկար</label>
 						<input type="file" name="image">
 					</div>
 					<div class="field button">
-						<input type="submit" value="Continue to Chat">
+						<input type="submit" value="Գրանցվել">
 					</div>
 			</form>
-			<div class="link">Already signed up? <a href="login.php">Login now</a></div>
+			<div class="link">Արդեն գրանցվա՞ծ եք <a href="login.php">Մուտք գործել</a></div>
 		</section>
 	</div>
 

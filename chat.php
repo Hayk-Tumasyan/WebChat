@@ -24,7 +24,7 @@
 				<img src="php/images/<?php echo $row['img'] ?>" alt="">
 				<div class="details">
 					<span><?php echo $row['fname'] . " " . $row['lname']?></span>
-					<p><?php if($row['status']==1){echo "online";}else{echo "offline";} ?></p>
+					<p><?php if($row['status']==1){echo "առցանց";}else{echo "անցանց";} ?></p>
 				</div>
 			</header>
 			<div class="chat-box">
