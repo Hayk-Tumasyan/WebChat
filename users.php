@@ -12,11 +12,13 @@
 			<header>
 				<?php
 					include_once "php/config.php";
+					// get current user
 					$sql = $conn->query("SELECT * FROM users WHERE unique_id = {$_SESSION['unique_id']}");
 					if(mysqli_num_rows($sql) > 0){
 						$row = mysqli_fetch_assoc($sql);
 					}
 				?>
+				<!-- display current user -->
 				<div class="content">
 					<img src="php/images/<?php echo $row['img'] ?>" alt="">
 					<div class="details">

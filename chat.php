@@ -12,6 +12,7 @@
 			<header>
 				<?php
 					include_once "php/config.php";
+					// get the incoming user
 					$user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
 					$sql = $conn->prepare("SELECT * FROM users WHERE unique_id = ?");
 					$sql->bind_param("s", $user_id);
@@ -28,14 +29,11 @@
 				</div>
 			</header>
 			<div class="chat-box">
-				<!-- <div class="error-box">
-					<span>sdkdfgj</span>
-				</div> -->
+
 			</div>
 			<form action="#" class="typing-area" autocomplete="off" enctype="multipart/form-data">
 				<input type="text" name="outgoing_id" value="<?php echo $_SESSION['unique_id'] ?>" hidden>
 				<input type="text" name="incoming_id" value="<?php echo $user_id ?>" hidden>
-				<!-- <button class="paperclip"><i class="fas fa-paperclip"></i></button> -->
 				<input type="file" name="inputFile" id="fileInput" name="file" hidden>
 
 				<!-- Paperclip button -->

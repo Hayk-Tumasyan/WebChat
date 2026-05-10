@@ -1,17 +1,18 @@
 <?php
 //GET USERS
     while($row=mysqli_fetch_assoc($result)){
+        // select the most recent message 
         $sql12 = "SELECT * FROM messages WHERE (outgoing_msg_id = {$outgoing_id} AND incoming_msg_id = {$row['unique_id']})
                   OR (outgoing_msg_id = {$row['unique_id']} AND incoming_msg_id = {$outgoing_id})
                   ORDER BY msg_id DESC LIMIT 1";
 
         $query2 = $conn->query($sql12);
-        $row2 = mysqli_fetch_assoc($query2);
+        $row2 = mysqli_fetch_assoc($query2); // get the most recent message's row
         $msg = "";
         $you = "";
         $ext = "";
         
-        // echo $ext;
+        // save the last message sent or recieved
         if(mysqli_num_rows($query2)>0){
             $resultm = $row2['msg'];
             if(!empty($resultm) ){
@@ -26,10 +27,9 @@
             } 
         }
 
-         
-        (mysqli_num_rows($query2)>0 && $row2['outgoing_msg_id']==$outgoing_id) ? $you = "Դուք: " : $you = "";
+        // display the chat and the last message sent or recieved
+        ($row2 && $row2['outgoing_msg_id']==$outgoing_id) ? $you = "Դուք: " : $you = "";
         ($row['status'] == 0) ? $offline = "offline" : $offline = "";
-        // $_SESSION['user_id'] = $row['unique_id'];
         $output .= '<a href="chat.php?user_id='.$row['unique_id'].'">
                 <div class="content">
                     <img src="php/images/'. $row['img'] .'">

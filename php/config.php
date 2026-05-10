@@ -1,5 +1,5 @@
 <?php
-// session_start();
+// create a connection with database
    $conn = mysqli_connect("localhost", "root", '', "chat");
 
    if(!$conn){

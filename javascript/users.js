@@ -2,6 +2,7 @@ const searchBar = document.querySelector(".users .search input"),
 searchBtn = document.querySelector(".users .search button"),
 usersList = document.querySelector(".users .users-list");
 
+// handle search button
 searchBtn.onclick = () => {
 	searchBtn.classList.toggle("active");
 	previousValue = searchBar.value;
@@ -14,6 +15,7 @@ searchBtn.onclick = () => {
 
 }
 
+// Handle search system
 searchBar.onkeyup = ()=>{
 	let searchTerm = searchBar.value;
 	if(searchTerm != ""){
@@ -36,7 +38,7 @@ searchBar.onkeyup = ()=>{
 		xhr.send("searchTerm=" + searchTerm);
 }
 	
-
+// Display users that the current user already has a chat
 setInterval(() => {
 let xhr = new XMLHttpRequest();
 if(!searchBar.classList.contains("active")){

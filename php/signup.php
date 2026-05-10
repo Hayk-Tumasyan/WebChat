@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once "config.php";
-
+    // get credentials from the registration form
     $fname = $conn->real_escape_string($_POST['fName']);
     $lname = $conn->real_escape_string($_POST['lName']);
     $email = $conn->real_escape_string($_POST['email']);
@@ -19,7 +19,7 @@
             } else{
 
                 $random_id = rand(time(), 1000000); //creating random id for a user
-                $status = 1; //once user signed up his status will be active now
+                $status = 1; //once user signed up his status will be online 
                 $hash = password_hash($password, PASSWORD_DEFAULT); //hash the password
 
                // uploaded image
@@ -28,8 +28,7 @@
                     $tmp_name = $_FILES['image']['tmp_name'];
 
                     //get file extension
-                    $img_explode = explode(".", $img_name);
-                    $img_ext = strtolower(end($img_explode));
+                    $img_ext = strtolower(pathinfo($img_name, PATHINFO_EXTENSION));
 
                     $extensions = ["jpg", "png", "jpeg"];
                     if(in_array($img_ext, $extensions) === true){
