@@ -20,7 +20,7 @@
 				?>
 				<!-- display current user -->
 				<div class="content">
-					<img src="php/images/<?php echo $row['img'] ?>" alt="">
+					<img src="php/images/<?php echo $row['img'] ?>">
 					<div class="details">
 						<span><?php echo $row['fname'] . " " . $row['lname'] ?></span>
 						<p><?php if($row['status'] == 1){

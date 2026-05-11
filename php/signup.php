@@ -33,7 +33,7 @@
                     $extensions = ["jpg", "png", "jpeg"];
                     if(in_array($img_ext, $extensions) === true){
                         $time = time();
-
+                        
                         $img_new_name = $time.$img_name;
 
                         if(move_uploaded_file($tmp_name, "images/".$img_new_name)){ //if user uploaded img moved to our folder successfully
@@ -63,9 +63,11 @@
                     }
 
                } else{
-                      $sql12 = $conn->prepare("INSERT INTO users (unique_id, fname, lname, email, password, status)
-                                                    VALUES(?, ?, ?, ?, ?, ?)");
-                            $sql12->bind_param("issssi", $random_id, $fname, $lname, $email, $hash, $status);
+
+                    $profileImg = "profile.png";
+                      $sql12 = $conn->prepare("INSERT INTO users (unique_id, fname, lname, email, password, img, status)
+                                                    VALUES(?, ?, ?, ?, ?, ?, ?)");
+                            $sql12->bind_param("isssssi", $random_id, $fname, $lname, $email, $hash, $profileImg, $status);
 
                             //session unique id
                             if($sql12->execute()){  //if data inserted successfully
