@@ -1,6 +1,16 @@
 <?php
     session_start();
+    if(!isset($_SESSION['unique_id'])){
+        echo "";
+        exit();
+    }
     include_once "config.php";
+    require_once __DIR__ . "/csrf.php";
+    if (!csrf_verify($_POST["csrf_token"] ?? "")) {
+        http_response_code(403);
+        echo "";
+        exit();
+    }
     $output = "";
     $outgoing_id = $_SESSION['unique_id']; // Current logged-in user's ID
     $input = trim($_POST['searchTerm']);  // Remove unnecessary spaces from input

@@ -1,15 +1,17 @@
 <?php
 	session_start();
+	require_once __DIR__ . "/php/csrf.php";
 	if(isset($_SESSION['unique_id'])){
 		header("location: users.php");
 	}
-	include_once "header.php";
+	include_once __DIR__ . "/includes/header.php";
 ?>
 <body>
 	<div class="wrapper">
 		<section class="form signup">
-			<header>Realtime Chat App</header>
+			<header>Realtime Web Chat</header>
 			<form action="#">
+				<input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8'); ?>">
 				<div class="error-txt"></div>
 				<div class="name-details">
 					<div class="field">
@@ -42,8 +44,8 @@
 		</section>
 	</div>
 
-	<script type="text/javascript" src="javascript/pass-show-hide.js"></script>
-	<script type="text/javascript" src="javascript/signup.js"></script>
+	<script type="text/javascript" src="assets/js/pass-show-hide.js"></script>
+	<script type="text/javascript" src="assets/js/signup.js"></script>
 
 </body>
 </html>

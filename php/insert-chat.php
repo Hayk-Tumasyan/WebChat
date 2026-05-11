@@ -1,6 +1,12 @@
 <?php
     session_start();
     if(isset($_SESSION['unique_id'])){
+        require_once __DIR__ . "/csrf.php";
+        if (!csrf_verify($_POST["csrf_token"] ?? "")) {
+            http_response_code(403);
+            echo "Invalid security token.";
+            exit;
+        }
         include_once "config.php";
         $outgoing_id = $_SESSION['unique_id'];
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
@@ -19,7 +25,7 @@
                 $time = time();
                 $file_new_name = $time.$file_name;
 
-                move_uploaded_file($tmp_name, "uploadedFiles/".$file_new_name);
+                move_uploaded_file($tmp_name, __DIR__ . "/uploadedFiles/" . $file_new_name);
             } else{
                 die($file_name." Can't be sent");
             }
@@ -37,6 +43,7 @@
         }
     else{
         header("location: ../login.php");
+        exit();
     }
     
 ?>

@@ -1,5 +1,10 @@
 <?php
     session_start();
+    require_once __DIR__ . "/csrf.php";
+    if (!csrf_verify($_POST["csrf_token"] ?? "")) {
+        echo "Invalid security token. Refresh the page and try again.";
+        exit;
+    }
     include_once "config.php";
     // Get form data
     $email = trim($_POST['email']);

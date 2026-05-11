@@ -1,5 +1,10 @@
 <?php
     session_start();
+    require_once __DIR__ . "/csrf.php";
+    if (!csrf_verify($_POST["csrf_token"] ?? "")) {
+        echo "Invalid security token. Refresh the page and try again.";
+        exit;
+    }
     include_once "config.php";
     // get credentials from the registration form
     $fname = $conn->real_escape_string($_POST['fName']);
@@ -18,9 +23,26 @@
                 echo "{$email} email already exists!";
             } else{
 
+                // password validation
+                if(strlen($password) < 10){
+                    echo "Password must be at least 10 characters";
+                    exit();
+                }
+                else if(!preg_match('/[A-Z]/', $password)){
+                    echo "Password must contain at least one uppercase letter";
+                    exit();
+                }
+                else if(!preg_match('/[0-9]/', $password)){
+                    echo "Password must contain at least one number";
+                    exit();
+                }
+                else{
+                    $hash = password_hash($password, PASSWORD_DEFAULT);
+                }
+
                 $random_id = rand(time(), 1000000); //creating random id for a user
                 $status = 1; //once user signed up his status will be online 
-                $hash = password_hash($password, PASSWORD_DEFAULT); //hash the password
+                
 
                // uploaded image
                if(isset($_FILES['image']) && $_FILES['image']['error'] === 0){
@@ -36,7 +58,7 @@
                         
                         $img_new_name = $time.$img_name;
 
-                        if(move_uploaded_file($tmp_name, "images/".$img_new_name)){ //if user uploaded img moved to our folder successfully
+                        if(move_uploaded_file($tmp_name, __DIR__ . "/images/" . $img_new_name)){ //if user uploaded img moved to our folder successfully
                             //insert all user data to database
                             $sql12 = $conn->prepare("INSERT INTO users (unique_id, fname, lname, email, password, img, status)
                                                     VALUES(?, ?, ?, ?, ?, ?, ?)");

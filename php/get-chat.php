@@ -1,6 +1,11 @@
 <?php
     session_start();
     if(isset($_SESSION['unique_id'])){
+        require_once __DIR__ . "/csrf.php";
+        if (!csrf_verify($_POST["csrf_token"] ?? "")) {
+            http_response_code(403);
+            exit;
+        }
         include_once "config.php";
         
         $outgoing_id = $_SESSION['unique_id'];

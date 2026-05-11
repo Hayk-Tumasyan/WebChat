@@ -1,12 +1,14 @@
 <?php
 	session_start();
-	include_once "header.php";
+	require_once __DIR__ . "/php/csrf.php";
+	include_once __DIR__ . "/includes/header.php";
 	if(!isset($_SESSION['unique_id'])){
 		header("location: login.php");
 		exit();
 	}
 ?>
 <body>
+	<div id="page-config" data-csrf="<?php echo htmlspecialchars(csrf_token(), ENT_QUOTES, 'UTF-8'); ?>" hidden></div>
 	<div class="wrapper">
 		<section class="users">
 			<header>
@@ -38,9 +40,10 @@
 				<button><i class="fas fa-search"></i></button>
 			</div>
 			<div class="users-list"></div>
+		</section>
+	</div>
 
-
-	<script src="javascript/users.js" type="text/javascript"></script>
+	<script src="assets/js/users.js" type="text/javascript"></script>
 
 </body>
 </html>

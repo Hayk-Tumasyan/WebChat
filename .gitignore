@@ -1,0 +1,25 @@
+# Local database overrides (copy from php/config.local.example.php)
+php/config.local.php
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Uploaded chat attachments (keep directory)
+php/uploadedFiles/*
+!php/uploadedFiles/.gitkeep
+
+# User-uploaded avatars (keep default placeholder)
+php/images/*
+!php/images/.gitkeep
+!php/images/profile.png
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
