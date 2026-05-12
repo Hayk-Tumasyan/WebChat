@@ -7,7 +7,7 @@
             echo "Invalid security token.";
             exit;
         }
-        include_once "config.php";
+        require_once __DIR__ . "/config.php";
         $outgoing_id = $_SESSION['unique_id'];
         $incoming_id = mysqli_real_escape_string($conn, $_POST['incoming_id']);
         $message = $_POST['message'];

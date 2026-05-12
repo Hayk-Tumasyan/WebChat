@@ -2,7 +2,7 @@
     session_start();
     // Check if user is logged in
     if(isset($_SESSION['unique_id'])){
-        include_once "config.php";
+        require_once __DIR__ . "/config.php";
 
         // Set user status to offline
         $sql = $conn->query(

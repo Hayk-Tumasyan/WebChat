@@ -5,7 +5,7 @@
         echo "Invalid security token. Refresh the page and try again.";
         exit;
     }
-    include_once "config.php";
+    require_once __DIR__ . "/config.php";
     // Get form data
     $email = trim($_POST['email']);
     $password = $_POST['password'];

@@ -16,7 +16,7 @@
 		<section class="chat-area">
 			<header>
 				<?php
-					include_once "php/config.php";
+					require_once __DIR__ . "/php/config.php";
 					// get the incoming user
 					$user_id = mysqli_real_escape_string($conn, $_GET['user_id']);
 					$sql = $conn->prepare("SELECT * FROM users WHERE unique_id = ?");

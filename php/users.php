@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once "config.php";
+    require_once __DIR__ . "/config.php";
     $outgoing_id = $_SESSION['unique_id'];
     $output = "";
 

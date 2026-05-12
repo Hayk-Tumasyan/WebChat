@@ -4,7 +4,7 @@
         echo "";
         exit();
     }
-    include_once "config.php";
+    require_once __DIR__ . "/config.php";
     require_once __DIR__ . "/csrf.php";
     if (!csrf_verify($_POST["csrf_token"] ?? "")) {
         http_response_code(403);

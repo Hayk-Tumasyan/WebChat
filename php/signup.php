@@ -5,7 +5,7 @@
         echo "Invalid security token. Refresh the page and try again.";
         exit;
     }
-    include_once "config.php";
+    require_once __DIR__ . "/config.php";
     // get credentials from the registration form
     $fname = $conn->real_escape_string($_POST['fName']);
     $lname = $conn->real_escape_string($_POST['lName']);
